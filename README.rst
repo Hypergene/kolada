@@ -22,7 +22,7 @@ There are 4 basic dimensions in the kolada data.
 Retrive a list with all kpis with 'skola' as a part of the title::
 
    import kolada.api as kolada
-   kpis = kolada.KPI.list('skola')
+   kpis = list(kolada.KPI.list('skola'))
 
 For each of those KPIs get data from one of the Swedish
 municipalities, Ale (1440) and periods 2011-2013::

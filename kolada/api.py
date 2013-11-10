@@ -363,8 +363,6 @@ if __name__ == '__main__':
     #for ou in OU.list('Blomman'):
     #    print ou
     #    pass
-    #for value in Value.exact([KPI('N01827'), KPI('N01828')], municipalities, range(2012, 2013)):
-    #     print value
 
     #for value in Value.get(kpis, municipalities, range(2011, 2013)):
     #    print value
