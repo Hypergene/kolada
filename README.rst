@@ -118,20 +118,55 @@ Object structure::
 Query data
 ----------
 
-Queries are divided in two levels, municipality and
-organizational unit level.
-Once you know the id of a KPI you can query values
-for that KPI over a period
+Queries are divided in two levels, municipality and organizational
+unit level. Once you know the metadata for KPI, municipality or
+organizational unit  you can query values for that KPI. For the
+municipality level
 
-http://api.kolada.se/v1/data/peryear/N00945/2009
+/v1/data/exact/KPI/MUNICIPALITY_ID/PERIOD
+    Example: http://api.kolada.se/v1/data/permunicipality/N00945/1860
+
+/v1/data/peryear/KPI/PERIOD,
+    Example: http://api.kolada.se/v1/data/peryear/N00945/2009
+
+/v1/data/permunicipality/KPI/MUNICIPALITY_ID
+    Example: http://api.kolada.se/v1/data/exact/N00945/1860/2009,2007
 
 Object structure::
 
     {
-        "kpi":"N00945",
-        "municipality":"0115",
-        "period":"2009",
-        "value":40.02198807,  // Both male and female
-        "value_m":null,       // Male
-        "value_f":null        // Female
+        "kpi": "<string>",
+        "municipality": "<string>",
+        "period": "<string>",
+        "value": <float>,     // Both male and female
+        "value_m": <float>,   // Male, null if no value exists
+        "value_f": <float>    // Female, null if no value exists
     }
+
+For the organizational unit level
+
+/v1/ou/data/exact/KPI/OU_ID/PERIOD
+    * Example: http://api.kolada.se/v1/ou/data/exact/N15033/V15E144001301/2009,2007
+    * Example with multiple KPI's and OU_ID's http://api.kolada.se/v1/ou/data/exact/N15033,N15030/V15E144001301,V15E144001101/2009,2008,2007
+
+/v1/ou/data/peryear/KPI/PERIOD
+    Example: http://api.kolada.se/v1/ou/data/peryear/N15033/2007
+
+/v1/ou/data/perou/KPI/OU_ID
+    Example: http://api.kolada.se/v1/ou/data/perou/N15033/V15E144001301
+
+
+
+Object structure::
+
+    {
+        "kpi": "<string>",
+        "out": "<string>",
+        "period": "<string>",
+        "value": <float>,
+        "value_m": <float>,
+        "value_f": <float>
+    }
+
+
+
