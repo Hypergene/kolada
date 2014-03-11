@@ -1,8 +1,8 @@
 Kolada API
 ==========
 
-Kolada provides a web-service for accessing standardized key
-performance indicators (KPI) concerning Swedish municipalities.
+`Kolada <http://www.kolada.se>`_ provides a web-service for accessing standardized `key
+performance indicators <http://en.wikipedia.org/wiki/Performance_indicator>`_ (KPI) concerning Swedish municipalities.
 This project describes that API and includes examples for accessing
 it in different languages.
 
@@ -10,29 +10,23 @@ it in different languages.
 Data and metadata
 -----------------
 
-Key performance indicator values are referred to as **data**.
-They can be filtered along four dimensions
+Key performance indicator values are referred to as **data** whereas **metadata** describes
 
-* Key performance Indicators(KPI)
+* Key performance indicator
 * Municipality
-* Organizational unit (OU) and
+* Organizational unit (OU)
 
-Each dimension is described using **metadata** which is also
-accessible via the service.
+For a proper query URL you need metadata such as id of a KPI and municipality or organizational unit. See the examples below.
+For each query the result is
 
-
-Query results
--------------
-
-* Each response is in **JSON** format.
-* Each result-set is limited to 100 items
+* in **JSON** format
+* limited to 100 items
 
 Routes
 ------
 
-The service is found at `http://api.kolada.se/v1/` and provides a
-read only API. Before you can query for data you need to have
-proper metadata to feed your query. Each response from the service
+The service is found at **http://api.kolada.se/v1/** and provides a
+read only API. Each response from the service
 if it's correct returns a JSON structure like::
 
     {
@@ -42,7 +36,7 @@ if it's correct returns a JSON structure like::
         "next": "<string>"       // Optional: Full URL to next page, if any
     }
 
-The **obj** structure differ a bit between metadata, find out in
+The **obj** structure differs between metadata, find out in
 the below section what it looks like for each.
 
 Metadata
@@ -52,9 +46,6 @@ For each query remember to `url-encode
 <http://www.w3schools.com/tags/ref_urlencode.asp>`_ the SEARCH_STR.
 
 KPI
-___
-
-Example
     * SEARCH_STR = Män som tar ut tillfällig föräldrapenning
 
     `<http://api.kolada.se/v1/kpi/M%C3%A4n%20som%20tar%20ut%20tillf%C3%A4llig%20f%C3%B6r%C3%A4ldrapenning>`_
@@ -73,9 +64,6 @@ Object structure::
 
 
 Municipality
-______________
-
-Example
     * SEARCH_STR = lund
 
     `<http://api.kolada.se/v1/municipality/lund>`_
@@ -98,7 +86,7 @@ type
 Organizational units within a municipality
 __________________________________________
 
-You cannot query organizational units across multiple
+Note! You cannot query organizational units across multiple
 municipalities.
 
 Example
@@ -118,19 +106,22 @@ Object structure::
 Query data
 ----------
 
-Queries are divided in two levels, municipality and organizational
+Data queries are divided in two levels, municipality and organizational
 unit level. Once you know the metadata for KPI, municipality or
 organizational unit  you can query values for that KPI. For the
 municipality level
 
 /v1/data/exact/KPI/MUNICIPALITY_ID/PERIOD
-    Example: http://api.kolada.se/v1/data/permunicipality/N00945/1860
+    Example: http://api.kolada.se/v1/data/exact/N00945/1860/2009,2007
 
-/v1/data/peryear/KPI/PERIOD,
+    * Note! KPI, MUNICIPALITY_ID and PERIOD can all be comma separated strings. The URL length is the limit which differs across browsers.
+
+
+/v1/data/peryear/KPI/PERIOD
     Example: http://api.kolada.se/v1/data/peryear/N00945/2009
 
 /v1/data/permunicipality/KPI/MUNICIPALITY_ID
-    Example: http://api.kolada.se/v1/data/exact/N00945/1860/2009,2007
+    Example: http://api.kolada.se/v1/data/permunicipality/N00945/1860
 
 Object structure::
 
