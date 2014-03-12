@@ -4,7 +4,10 @@ Kolada API
 `Kolada <http://www.kolada.se>`_ provides a web-service for accessing standardized `key
 performance indicators <http://en.wikipedia.org/wiki/Performance_indicator>`_ (KPI) concerning Swedish municipalities.
 This project describes that API and includes examples for accessing
-it in different languages.
+it in
+
+* `python <https://github.com/Hypergene/kolada/tree/master/python>`_
+
 
 
 Data and metadata
@@ -159,7 +162,3 @@ Object structure::
         "value_f": <float>
     }
 
-Language specific
-=================
-
-`python <https://github.com/Hypergene/kolada/tree/master/kolada>`_
