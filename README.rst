@@ -7,7 +7,7 @@ This project describes that API and includes examples for accessing
 it in
 
 * `python <https://github.com/Hypergene/kolada/tree/master/python>`_
-
+* `javascript <https://github.com/Hypergene/kolada/tree/master/javascript>`_
 
 
 Data and metadata
