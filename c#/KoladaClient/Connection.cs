@@ -49,6 +49,23 @@ namespace KoladaClient
         }
 
         /// <summary>
+        /// Internal function to merge one DataTable into another. Must have same columns. Used since built-in Table-merge sometimes fails due to JSON interpretation of DataTable
+        /// </summary>
+        /// <param name="result">Resulting DataTable, values will be merged into this</param>
+        /// <param name="rs">DataTable to merge into result</param>
+        /// <returns>void</returns>
+        private void mergeIntoDatatable(ref DataTable result, DataTable rs) {
+           object[] values = new object[rs.Columns.Count];
+
+           foreach(DataRow row in rs.Rows ) {
+              for( int i = 0; i < rs.Columns.Count; i++ ) {
+                 values[i] = row[i];
+              }
+              result.Rows.Add(values);
+           }
+        }
+
+        /// <summary>
         /// Internal function to convert JSON response from webserver to DataTable
         /// </summary>
         /// <param name="url">Kolada Webservice query URL</param>
@@ -61,9 +78,10 @@ namespace KoladaClient
                 StreamReader reader = new StreamReader(this.getDataFromServer(url), Encoding.UTF8);
                 rs = JsonConvert.DeserializeObject<MetadataRS>(reader.ReadToEnd());
                 if( resultTable == null ) {
-                    resultTable = rs.values;
+                   resultTable = rs.values;
                 } else {
-                    resultTable.Merge(rs.values);
+                   //resultTable.Merge(rs.values);
+                   mergeIntoDatatable(ref resultTable, rs.values);
                 }
 
                 url = rs.next;
