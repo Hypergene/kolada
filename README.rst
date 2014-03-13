@@ -29,7 +29,7 @@ For each query the result is
 Routes
 ------
 
-The service is found at **http://api.kolada.se/v1/** and provides a
+The service is found at **api.kolada.se/v1/...** and provides a
 read only API. Each response from the service
 if it's correct returns a JSON structure like::
 
