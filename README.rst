@@ -24,7 +24,10 @@ For a proper query URL you need metadata such as id of a KPI and municipality or
 For each query the result is
 
 * in **JSON** format
-* limited to 100 items
+* limited to 100 items for each request
+
+Note! To read all entries for a query you need to retrieve each page by following the URL in the **next** field, see the 
+Routes section for more information.
 
 Routes
 ------
