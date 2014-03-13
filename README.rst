@@ -8,7 +8,7 @@ it in
 
 * `python <https://github.com/Hypergene/kolada/tree/master/python>`_
 * `javascript <https://github.com/Hypergene/kolada/tree/master/javascript>`_
-* `c# <https://github.com/Hypergene/kolada/tree/master/c#>`_
+* `c# <https://github.com/Hypergene/kolada/tree/master/c%23>`_
 
 
 Data and metadata
