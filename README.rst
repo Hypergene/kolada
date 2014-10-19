@@ -56,6 +56,25 @@ Metadata
 For each query remember to `url-encode
 <http://www.w3schools.com/tags/ref_urlencode.asp>`_ the SEARCH_STR.
 
+All metadata may be queried on the form
+
+  entity/id
+  entity?title=...
+
+where entity may be 
+
+  * kpi
+  * kpi_groups
+  * municipality
+  * municipality_groups
+  * ou
+
+The id may be a comma separated string of many ids.
+
+
+Examples
+________
+
 KPI
     * SEARCH_STR = Män som tar ut tillfällig föräldrapenning
 
@@ -116,6 +135,32 @@ Object structure::
         "municipality": "<string>",
         "title": "<string>"
     }
+
+
+Groups
+_______
+
+There a two types of groups defined by the by the API, 
+
+   * KPI groups
+   * Municipality groups
+
+Example:
+    * SEARCH_STR = kostnad
+
+    `<http://api.kolada.se/v2/kpi_groups?title=kostnad>`_
+
+Object structure::
+
+    {
+        "id": "<string>",
+        "title": "<string>",
+        "members": [
+            {"id": "<string>", "title": "<string>"}
+            ...
+        ]
+    }
+
 
 
 Query data
