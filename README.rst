@@ -58,8 +58,8 @@ For each query remember to `url-encode
 
 All metadata may be queried on the form
 
-  entity/id
-  entity?title=...
+  * entity/id
+  * entity?title=...
 
 where entity may be 
 
