@@ -38,13 +38,17 @@ if it's correct returns a JSON structure like::
 
     {
         "values": [ {obj}, {obj}, ..., {obj}],
-        "count": <int>,          // Length of values
-        "previous": "<string>",  // Optional: Full URL to previous page, if any
-        "next": "<string>"       // Optional: Full URL to next page, if any
+        "count": <int>,               // Length of values
+        "previous_page": "<string>",  // Optional: Full URL to previous page, if any
+        "next_page": "<string>"       // Optional: Full URL to next page, if any
     }
 
 The **obj** structure differs between metadata, find out in
 the below section what it looks like for each.
+
+For all URL:s a parameter *per_page* may be given, which will limit
+the number of posts in the result. The default value is the
+maximum, 5000.
 
 Metadata
 --------
