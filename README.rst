@@ -131,10 +131,10 @@ Here, the MUNICIPALITY_ID may be that of a group.
 or where only two are given:
 
 /v2/data/kpi/<KPI>/year/<PERIOD>
-    Example: http://api.kolada.se/v2/data/peryear/N00945/2009
+    Example: http://api.kolada.se/v2/data/kpi/N00945/year/2009
 
 /v2/data/kpi/<KPI>/municipality/<MUNICIPALITY_ID>
-    Example: http://api.kolada.se/v2/data/permunicipality/N00945/1860
+    Example: http://api.kolada.se/v2/data/kpi/N00945/municipality/1860
 
 /v2/data/municipality/<MUNICIPALITY_ID>/year/<PERIOD>
     Example: http://api.kolada.se/v2/data/municipality/1860/year/2009
