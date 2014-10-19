@@ -24,15 +24,15 @@ For a proper query URL you need metadata such as id of a KPI and municipality or
 For each query the result is
 
 * in **JSON** format
-* limited to 100 items for each request
+* limited to 5000 items for each request
 
-Note! To read all entries for a query you need to retrieve each page by following the URL in the **next** field, see the 
+Note! To read all entries for a query you need to retrieve each page by following the URL in the **next_page** field, see the 
 Routes section for more information.
 
 Routes
 ------
 
-The service is found at **api.kolada.se/v1/...** and provides a
+The service is found at **api.kolada.se/v2/...** and provides a
 read only API. Each response from the service
 if it's correct returns a JSON structure like::
 
@@ -55,17 +55,23 @@ For each query remember to `url-encode
 KPI
     * SEARCH_STR = Män som tar ut tillfällig föräldrapenning
 
-    `<http://api.kolada.se/v1/kpi/M%C3%A4n%20som%20tar%20ut%20tillf%C3%A4llig%20f%C3%B6r%C3%A4ldrapenning>`_
+    `<http://api.kolada.se/v2/kpi?title=M%C3%A4n%20som%20tar%20ut%20tillf%C3%A4llig%20f%C3%B6r%C3%A4ldrapenning>`_
 
 Object structure::
 
     {
+        "auspice": "<string>",
         "id": "<string>",
         "title": "<string>",
         "description": "<string>",
         "definition": "<string>",
         "municipality_type": "L|K",
-        "divided_by_gender": <bool>
+        "is_divided_by_gender": <int>,
+        "operating_area": "<string>",
+        "ou_publication_date": "<string>" or null,
+        "perspective": "<string>",
+        "publication_date": "<string>" or null,
+        "unit": "<string>"
     }
 
 
@@ -73,7 +79,7 @@ Object structure::
 Municipality
     * SEARCH_STR = lund
 
-    `<http://api.kolada.se/v1/municipality/lund>`_
+    `<http://api.kolada.se/v2/municipality?title=lund>`_
 
 Object structure::
 
@@ -90,22 +96,20 @@ type
 
 
 
-Organizational units within a municipality
-__________________________________________
+Organizational units 
+_____________________
 
-Note! You cannot query organizational units across multiple
-municipalities.
 
-Example
-    * MUNICIPLAITY_ID = 1281
+Example:
     * SEARCH_STR = skola
 
-    `<http://api.kolada.se/v1/ou/1281/skola>`_
+    `<http://api.kolada.se/v2/ou?title=skola>`_
 
 Object structure::
 
     {
         "id": "<string>",
+        "municipality": "<string>",
         "title": "<string>"
     }
 
@@ -113,22 +117,28 @@ Object structure::
 Query data
 ----------
 
-Data queries are divided in two levels, municipality and organizational
-unit level. Once you know the metadata for KPI, municipality or
-organizational unit  you can query values for that KPI. For the
-municipality level
+Data queries are on the following forms, the form where all entities are given: 
 
-/v1/data/exact/KPI/MUNICIPALITY_ID/PERIOD
-    Example: http://api.kolada.se/v1/data/exact/N00945/1860/2009,2007
+/v2/data/kpi/<KPI>/municipality/<MUNICIPALITY_ID>/year/<PERIOD>
+
+Here, the MUNICIPALITY_ID may be that of a group.
+
+    Example: http://api.kolada.se/v2/data/kpi/N00945/municipality/1860/year/2009,2007
 
     * Note! KPI, MUNICIPALITY_ID and PERIOD can all be comma separated strings. The URL length is the limit which differs across browsers.
 
 
-/v1/data/peryear/KPI/PERIOD
-    Example: http://api.kolada.se/v1/data/peryear/N00945/2009
+or where only two are given:
 
-/v1/data/permunicipality/KPI/MUNICIPALITY_ID
-    Example: http://api.kolada.se/v1/data/permunicipality/N00945/1860
+/v2/data/kpi/<KPI>/year/<PERIOD>
+    Example: http://api.kolada.se/v2/data/peryear/N00945/2009
+
+/v2/data/kpi/<KPI>/municipality/<MUNICIPALITY_ID>
+    Example: http://api.kolada.se/v2/data/permunicipality/N00945/1860
+
+/v2/data/municipality/<MUNICIPALITY_ID>/year/<PERIOD>
+    Example: http://api.kolada.se/v2/data/municipality/1860/year/2009
+
 
 Object structure::
 
@@ -136,22 +146,33 @@ Object structure::
         "kpi": "<string>",
         "municipality": "<string>",
         "period": "<string>",
-        "value": <float>,     // Both male and female
-        "value_m": <float>,   // Male, null if no value exists
-        "value_f": <float>    // Female, null if no value exists
+        "values: [
+           {"count": <int>, "gender": "T|K|F", "status": "<string>", "value": <float> or null}
+           ...
+        ]
     }
 
-For the organizational unit level
+The values array may at most contain three entries, one for each
+gender. 'count' we only differ from 1 when the municipality is a
+group. In this case the count will be the number of members in that
+group which contributed to the value, which is an unweighted average.
 
-/v1/ou/data/exact/KPI/OU_ID/PERIOD
-    * Example: http://api.kolada.se/v1/ou/data/exact/N15033/V15E144001301/2009,2007
-    * Example with multiple KPI's and OU_ID's http://api.kolada.se/v1/ou/data/exact/N15033,N15030/V15E144001301,V15E144001101/2009,2008,2007
 
-/v1/ou/data/peryear/KPI/PERIOD
-    Example: http://api.kolada.se/v1/ou/data/peryear/N15033/2007
+For the organizational unit level, this are exacly the same as above
+except we are working with ou instead of municipality.
 
-/v1/ou/data/perou/KPI/OU_ID
-    Example: http://api.kolada.se/v1/ou/data/perou/N15033/V15E144001301
+/v2/oudata/kpi/<KPI>/ou/<OU_ID>/year/<PERIOD>
+    * Example: http://api.kolada.se/v2/oudata/kpi/N15033/ou/V15E144001301/2009,2007
+    * Example with multiple KPI's and OU_ID's http://api.kolada.se/v2/oudata/kpi/N15033,N15030/ou/V15E144001301,V15E144001101/year/2009,2008,2007
+
+/v2/oudata/kpi/<KPI>/year/<PERIOD>
+    Example: http://api.kolada.se/v2/oudata/kpi/N15033/year/2007
+
+/v1/oudata/kpi/<KPI</ou/<OU_ID>
+    Example: http://api.kolada.se/v2/oudata/kpi/N15033/ou/V15E144001301
+
+/v1/oudata/ou/<KPI</year/<PERIOD>
+    Example: http://api.kolada.se/v2/oudata/ou/V15E144001301/year/2007
 
 
 
@@ -161,8 +182,9 @@ Object structure::
         "kpi": "<string>",
         "out": "<string>",
         "period": "<string>",
-        "value": <float>,
-        "value_m": <float>,
-        "value_f": <float>
+        "values": [
+           {"count": <int>, "gender": "T|K|F", "status": "<string>", "value": <float> or null},
+           ...
+        ]
     }
 
