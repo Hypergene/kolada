@@ -211,7 +211,7 @@ For the organizational unit level, this are exacly the same as above
 except we are working with ou instead of municipality.
 
 /v2/oudata/kpi/<KPI>/ou/<OU_ID>/year/<PERIOD>
-    * Example: http://api.kolada.se/v2/oudata/kpi/N15033/ou/V15E144001301/2009,2007
+    * Example: http://api.kolada.se/v2/oudata/kpi/N15033/ou/V15E144001301/year/2009,2007
     * Example with multiple KPI's and OU_ID's http://api.kolada.se/v2/oudata/kpi/N15033,N15030/ou/V15E144001301,V15E144001101/year/2009,2008,2007
 
 /v2/oudata/kpi/<KPI>/year/<PERIOD>
