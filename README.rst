@@ -1,18 +1,49 @@
 Kolada API
 ==========
 
-`Kolada <http://www.kolada.se>`_ provides a web-service for accessing standardized `key
-performance indicators <http://en.wikipedia.org/wiki/Performance_indicator>`_ (KPI) concerning Swedish municipalities.
-This project describes that API and includes examples for accessing
-it in
-
-* `python <https://github.com/Hypergene/kolada/tree/master/python>`_
-* `javascript <https://github.com/Hypergene/kolada/tree/master/javascript>`_
-* `c# <https://github.com/Hypergene/kolada/tree/master/c%23>`_
+`Kolada <http://www.kolada.se>`_ provides a web-service for accessing
+standardized `key performance indicators
+<http://en.wikipedia.org/wiki/Performance_indicator>`_ (KPI)
+concerning Swedish municipalities and organizational units. The
+database is created and upheld by `RKA <http://www.rka.nu/>`_ This
+project describes that API and includes examples for accessing it.
 
 
-Data and metadata
------------------
+The kolada database
+--------------------
+
+Within the kolada database there are two different types of data. 
+
+* The municipal data 
+* The organizational unit data
+
+The municipal data contains KPIs for the Swedish kommuner and
+landsting, there are about 3500 KPIs within the database. On
+organizational unit level the data is less comprehensive, but there
+are still quite a few KPI on this level. Each KPI is currently
+measured once a year, and the data may be divided by gender. I.e. for
+each KPI there may be at most three values, based on gender being
+female, male and a total.
+
+The general structure of the data is::
+
+    KPI, municipal or OU, year, gender: data
+
+In other words, the database has only four basic dimension for each
+dataset. 
+
+To help client make relevant queries, there are two help-dimensions,
+KPI groups and Municipal groups. The KPI groups consists of the groups
+that RKA have chosen to publish as 'Färdiga presentationer' (readymade
+presentations) on `kolada <http://www.kolada.se>`. 
+
+The municipal groups are groups present in koladas various
+reports. Data is also present for each municipal group, this value is
+an unweighted average of the members.
+
+
+Technical information about data and metadata
+---------------------------------------------
 
 Key performance indicator values are referred to as **data** whereas **metadata** describes
 
