@@ -27,7 +27,7 @@ female, male and a total.
 
 The general structure of the data is::
 
-    KPI, municipal or OU, year, gender: data
+    KPI, municipal or organizational unit, year, gender: data
 
 In other words, the database has only four basic dimension for each
 dataset. 
@@ -41,6 +41,10 @@ The municipal groups are groups present in koladas various
 reports. Data is also present for each municipal group, this value is
 an unweighted average of the members.
 
+
+Below is a technical information about the URL:s in koladas Web
+API. If you know swedish you may also be interested in the `examples/`_
+folder.
 
 
 Technical information about data and metadata
