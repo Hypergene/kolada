@@ -20,7 +20,7 @@ Within the kolada database there are two different types of data.
 The municipal data contains KPIs for the Swedish kommuner and
 landsting, there are about 3500 KPIs within the database. On
 organizational unit level the data is less comprehensive, but there
-are still quite a few KPI on this level. Each KPI is currently
+are still quite a few KPIs on this level. Each KPI is currently
 measured once a year, and the data may be divided by gender. I.e. for
 each KPI there may be at most three values, based on gender being
 female, male and a total.
@@ -35,7 +35,7 @@ dataset.
 To help client make relevant queries, there are two help-dimensions,
 KPI groups and Municipal groups. The KPI groups consists of the groups
 that RKA have chosen to publish as 'Färdiga presentationer' (readymade
-presentations) on `kolada <http://www.kolada.se>`. 
+presentations) on `kolada <http://www.kolada.se>`_. 
 
 The municipal groups are groups present in koladas various
 reports. Data is also present for each municipal group, this value is
