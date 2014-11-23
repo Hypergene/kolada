@@ -42,6 +42,7 @@ reports. Data is also present for each municipal group, this value is
 an unweighted average of the members.
 
 
+
 Technical information about data and metadata
 ---------------------------------------------
 
@@ -267,4 +268,16 @@ Object structure::
            ...
         ]
     }
+
+
+
+Error-codes
+-----------
+
+Since this is a read-only API, and not a very strict one, there are
+not many error you can encounter. But the following may happen
+
+* HTTP 404 - the url requested did not match any of the URLs described above.
+* HTTP 400 - Typically some or many of the paramaters given in the URL, were illegal. 
+
 
