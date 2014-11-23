@@ -278,6 +278,11 @@ Since this is a read-only API, and not a very strict one, there are
 not many error you can encounter. But the following may happen
 
 * HTTP 404 - the url requested did not match any of the URLs described above.
-* HTTP 400 - Typically some or many of the paramaters given in the URL, were illegal. 
+* HTTP 400 - Typically some or many of the paramaters given in the
+  URL, were illegal. But a too long URL also generates a HTTP 400
+  error.
+* HTTP 500 - There are some error which will generate a
+  500-code. Typically if you encounter this is should be reported to
+  RKA.
 
 
