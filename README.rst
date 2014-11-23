@@ -43,8 +43,9 @@ an unweighted average of the members.
 
 
 Below is a technical information about the URL:s in koladas Web
-API. If you know swedish you may also be interested in the `examples/`_
-folder.
+API. If you know swedish you may also be interested in the examples folder, 
+e.g `examples/kommun_i_korthet.rst`_
+
 
 
 Technical information about data and metadata
