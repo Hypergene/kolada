@@ -23,7 +23,7 @@ HTTP svar.
 Hitta nyckeltal
 ---------------
 
-Nyckeltalsgruppernas bas-url är enligt beskrivningen::
+Nyckeltalsgruppernas bas-url är enligt beskrivningen:
 
     `<http://api.kolada.se/v2/kpi_groups>`_
 
@@ -45,7 +45,7 @@ JSON-formatterarna som finns på webben. Följande nyckeltal är med i gruppen:
 Hitta id för Helsingborg
 ------------------------
 
-Id:et för Helsingborg hittar vi i municipality delen
+Id:et för Helsingborg hittar vi i municipality delen:
 
     `<http://api.kolada.se/v2/municipality?title=helsingborg>`_
 
