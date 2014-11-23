@@ -168,6 +168,14 @@ Object structure::
         "title": "<string>"
     }
 
+you may optionally give a municipal as a parameter, e.g.:
+
+    `<http://api.kolada.se/v2/ou?municipal=0114&title=skola>`_
+
+which will return all OUs from municipal 'Upplands Väsby', where
+'skola' is part of the title.
+    
+
 
 Groups
 _______
