@@ -120,7 +120,7 @@ KPI
 Object structure::
 
     {
-        "auspice": "<string>",
+        "auspices": "<string>",
         "id": "<string>",
         "title": "<string>",
         "description": "<string>",
@@ -131,8 +131,33 @@ Object structure::
         "ou_publication_date": "<string>" or null,
         "perspective": "<string>",
         "publication_date": "<string>" or null,
-        "unit": "<string>"
+        "has_ou_data": <true/false>,
+        "prel_publication_date": "<string>" or null
     }
+
+
+Here:
+
+* publication_date and prel_publication_date is the expected next
+  publication or preliminary publication of the KPI on
+  municipality-level.
+
+* ou_publication_date is the date of the next publication of the KPI
+  on OU-level.
+
+* is_divided_by_gender is a hint that there may be data on all genders.
+
+* municipality_type is either L (for County Council `(swedish:
+  Landsting)`) or K for municipality `(swedish: Kommun)`
+
+* auspices and operating_area are metadata on the KPI.
+
+* has_ou_data indicates whether there may exist data on the OU-level. 
+
+  
+In the structure above, there are several dates that are given as
+strings. The typical structure of the date is the standard swedish:
+YYYY-mm-dd, but there are no technical constraints for this pattern.  
 
 
 
@@ -173,12 +198,13 @@ Object structure::
         "title": "<string>"
     }
 
-you may optionally give a municipal as a parameter, e.g.:
+you may optionally give a municipality as a parameter, e.g.:
 
-    `<http://api.kolada.se/v2/ou?municipal=0114&title=skola>`_
+    `<http://api.kolada.se/v2/ou?municipality=0114&title=skola>`_
 
 which will return all OUs from municipal 'Upplands Väsby', where
-'skola' is part of the title.
+'skola' is part of the title. The municipality paramter may be a
+comma-separated string of many municipalities.
     
 
 
