@@ -67,4 +67,12 @@ Där vi har använt formen::
 Kom ihåg att på alla positioner i URL:en ovan har man rätt att ange kommaseparerade värden. 
 
 
+Gå vidare till enhetsdata
+-------------------------
+
+I exemplet `enhetsdata för ett givet nyckeltal <enkel_enhets_data.rst>`_ 
+tittar vi på hur man kan hämta enhetsdata.
+
+
+
 
