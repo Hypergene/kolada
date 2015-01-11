@@ -27,14 +27,13 @@ Nyckeltalsgruppernas bas-url är enligt beskrivningen:
 
     `<http://api.kolada.se/v2/kpi_groups>`_
 
-och vi ska leta upp 'Kommunens kvalitet i korthet', så vi går till
+och vi ska leta upp 'Kommunens kvalitet i korthet', som förkortas i namnen till KKiK så vi går till
 
-    `<http://api.kolada.se/v2/kpi_groups?title=kommunens%20kvalitet%20i%20korthet>`_
+    `<http://api.kolada.se/v2/kpi_groups?title=kkik>`_
 
-(Man kan typiskt skriva in 'kommunens kvalitet i korthet' i browsern
-utan att ange %20 för mellanslag.) 
+Det finns 4 grupper som tillhör kommunen kvalitet i korthet, bland annat "KKiK - ordinarie mått"
 
-Detta ger ett resultat med 40 nyckeltal, i ett JSON resultatset. Om
+Om man tittar på denna gruppen, så har den c:a 40 nyckeltal. Om
 man inte har ett programmeringsspråk att jobba med kan det vara
 lättare att kopiera in resultatsettet i någon av de många
 JSON-formatterarna som finns på webben. Följande nyckeltal är med i gruppen:
