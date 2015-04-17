@@ -309,6 +309,43 @@ Object structure::
     }
 
 
+New, deleted or changd values
+------------------------------
+
+All data-queries has a optional extraparameter *from_date*. This
+parameter notifies the API that the last time you made *the exact same
+query* was at this perticular date, and you want the changes since
+then. 
+
+**OBS!** The from_date parameter works only on data-queries, and will not
+work on entity-queries.
+
+When the from_date parameter is given all objects in the values array are returned with an extra-parameter **is_deleted**.
+
+Object structure::
+
+    {
+        "kpi": "<string>",
+        "out": "<string>",
+        "period": "<string>",
+        "values": [
+           {"count": <int>, "gender": "T|K|F", "status": "<string>", "value": <float> or null, "is_deleted": 0|1},
+           ...
+        ]
+    }
+
+When is_deleted is set the value will always be null. 
+
+The format of the from_date parameter is standard swedish date format: YYYY-MM-DD.
+
+Example::
+
+    http://api.kolada.se/v2/data/municipality/1860/year/2009?from_date=2015-02-28
+
+Here we ask for changes made to data in this request from 2015-02-28. 
+
+
+
 
 Error-codes
 -----------
