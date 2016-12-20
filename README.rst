@@ -288,10 +288,10 @@ except we are working with ou instead of municipality.
 /v2/oudata/kpi/<KPI>/year/<PERIOD>
     Example: http://api.kolada.se/v2/oudata/kpi/N15033/year/2007
 
-/v1/oudata/kpi/<KPI</ou/<OU_ID>
+/v2/oudata/kpi/<KPI</ou/<OU_ID>
     Example: http://api.kolada.se/v2/oudata/kpi/N15033/ou/V15E144001301
 
-/v1/oudata/ou/<KPI</year/<PERIOD>
+/v2/oudata/ou/<KPI</year/<PERIOD>
     Example: http://api.kolada.se/v2/oudata/ou/V15E144001301/year/2007
 
 
