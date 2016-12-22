@@ -34,8 +34,7 @@ dataset.
 
 To help client make relevant queries, there are two help-dimensions,
 KPI groups and Municipal groups. The KPI groups consists of the groups
-that RKA have chosen to publish as 'Färdiga presentationer' (readymade
-presentations) on `kolada <http://www.kolada.se>`_. 
+that RKA have chosen to publish as 'Tabeller' (Jämföraren) on `kolada <http://www.kolada.se>`_. 
 
 The municipal groups are groups present in koladas various
 reports. Data is also present for each municipal group, this value is
