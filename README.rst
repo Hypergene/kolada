@@ -18,7 +18,7 @@ Within the kolada database there are two different types of data.
 * The organizational unit data
 
 The municipal data contains KPIs for the Swedish kommuner and
-landsting, there are about 3500 KPIs within the database. On
+landsting, there are about 4500 KPIs within the database. On
 organizational unit level the data is less comprehensive, but there
 are still quite a few KPIs on this level. Each KPI is currently
 measured once a year, and the data may be divided by gender. I.e. for
