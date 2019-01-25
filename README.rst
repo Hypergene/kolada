@@ -124,7 +124,7 @@ Object structure::
         "title": "<string>",
         "description": "<string>",
         "definition": "<string>",
-        "municipality_type": "L|K",
+        "municipality_type": "L|K|A",
         "is_divided_by_gender": <int>,
         "operating_area": "<string>",
         "ou_publication_date": "<string>" or null,
@@ -147,7 +147,8 @@ Here:
 * is_divided_by_gender is a hint that there may be data on all genders.
 
 * municipality_type is either L (for County Council `(swedish:
-  Landsting)`) or K for municipality `(swedish: Kommun)`
+  Landsting)`) or K for municipality `(swedish: Kommun)`. A is short
+  for a kpi where values for both K and L may exists.
 
 * auspices and operating_area are metadata on the KPI.
 
